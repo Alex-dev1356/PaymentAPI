@@ -1,4 +1,7 @@
 
+using Microsoft.EntityFrameworkCore;
+using PaymentAPI.Data;
+
 namespace PaymentAPI
 {
     public class Program
@@ -13,6 +16,9 @@ namespace PaymentAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<PaymentDetailContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
 
             var app = builder.Build();
 
