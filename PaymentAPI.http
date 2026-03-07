@@ -4,3 +4,6 @@ GET {{PaymentAPI_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+GET {{PaymentAPI_HostAddress}}/api/PaymentDetail
+Accept: application/json
