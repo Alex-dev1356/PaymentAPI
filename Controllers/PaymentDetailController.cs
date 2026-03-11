@@ -78,6 +78,11 @@ namespace PaymentAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<PaymentDetail>> PostPaymentDetail(PaymentDetail paymentDetail)
         {
+            if (_context.PaymentDetails.Any(pd => pd.CardNumber == paymentDetail.CardNumber))
+            {
+                return Conflict("A payment detail with the same card number already exists.");
+            }
+
             _context.PaymentDetails.Add(paymentDetail);
             await _context.SaveChangesAsync();
 
